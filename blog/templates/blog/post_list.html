@@ -1,0 +1,99 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block body_block %}
+<div class="container">
+    {% if user.is_authenticated %}
+    <div class="row">
+        <div class="col">
+            <a href="{% url 'blog:new_post' %}" class="newposticon"><i class="icon-plus"></i><strong>New
+                    Post</strong></a>
+        </div>
+    </div>
+    {% endif %}
+    <div class="row">
+        <div class="content col-12 col-lg-9 posts">
+            <div class="card my-3">
+                <div class="card-body">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-2">
+                                <img class="img-fluid rounded-circle img-thumbnail" src="{% static 'img/paul.jpg' %}"
+                                    alt="">
+                            </div>
+                            <div class="col-10">
+                                <a href="{% url 'blog:article' %}" class="card_title_link">
+                                    <h1 class="mb-3 card-title">Spring Boot</h1>
+                                </a>
+                                <div class="row">
+                                    <div class="col d-inline-flex">
+                                        <p>Paul Miranda</p>
+                                        <i class="icon-dot"></i>
+                                        <p>28 de Marzo del 2019</p>
+                                    </div>
+                                </div>
+                                <p>
+                                    <a href="#" class="badge badge-light">spring-boot</a>
+                                    <a href="#" class="badge badge-light">java</a>
+                                    <a href="#" class="badge badge-light">jsp</a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% for post in post_list %}
+            <div class="card my-3">
+                <div class="card-body">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-2">
+                                <img class="img-fluid rounded-circle img-thumbnail" src="{% static 'img/paul.jpg' %}"
+                                    alt="">
+                            </div>
+                            <div class="col-10">
+                                <a href="{% url 'blog:article' %}" class="card_title_link">
+                                    <h1 class="mb-3 card-title">{{post.title}}</h1>
+                                </a>
+                                <div class="row">
+                                    <div class="col d-inline-flex">
+                                        <p>{{post.author}}</p>
+                                        <i class="icon-dot"></i>
+                                        <p>{{post.created_date}}</p>
+                                    </div>
+                                </div>
+                                <p>
+                                    <a href="#" class="badge badge-light">spring-boot</a>
+                                    <a href="#" class="badge badge-light">java</a>
+                                    <a href="#" class="badge badge-light">jsp</a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        <div class="sidebar col-12 col-lg-3">
+            <div class="card my-3 iconos">
+                <div class="card-body d-flex justify-content-between">
+                    <a href=""><i class="icon-github-circled"></i></a>
+                    <a href=""><i class="icon-linkedin"></i></a>
+                    <a href=""><i class="icon-twitter"></i></a>
+                    <a href=""><i class="icon-instagram"></i></a>
+                    <a href=""><i class="icon-facebook-official"></i></a>
+                </div>
+            </div>
+            <div class="card my-3">
+                <div class="card-body text-center">
+                    <h4>Popular Tags</h4>
+                </div>
+            </div>
+            <div class="card my-3 text-muted">
+                <div class="card-body">
+                    Paul Miranda Vega
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

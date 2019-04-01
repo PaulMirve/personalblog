@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block body_block %}
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <h1>New Post</h1>
+            <form action="" method="POST">
+                {%csrf_token%}
+                {{ form.as_p }}
+                <input type="submit" class="btn btn-save" value="Save">
+            </form>
+        </div>
+    </div>
+</div>
+{% load static %}
+<script src="{% static 'js/medium-editor.js' %}"></script>
+<script src="{% static 'js/medium-button.min.js' %}"></script>
+<script>
+    var editor = new MediumEditor('.editable', {
+        toolbar: {
+            buttons: ['bold', 'italic', 'underline', 'anchor', 'h2', 'h3', 'quote', 'code']
+        },
+        extensions: {
+            // compact
+            'code': new MediumButton({
+                label: 'code',
+                start: '<pre><code>',
+                end: '</code></pre>'
+            }),
+        }
+    })
+</script>
+{% endblock %}

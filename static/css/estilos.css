@@ -1,0 +1,135 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html,
+body {
+    height: 100pv;
+    background: #FFFCFF;
+}
+
+body {
+    min-height: 100vh;
+    position: relative;
+    margin: 0;
+    padding-bottom: 80px;
+}
+
+main {
+    min-height: 80%;
+    margin-top: 100px;
+}
+
+/* HEADER */
+
+header i {
+    color: white;
+}
+
+nav {
+    background: #247BA0;
+}
+
+.nav-item {
+    margin-right: 10px;
+}
+
+/*FOOTER*/
+
+footer {
+    position: absolute;
+    bottom: 0;
+    height: 50px;
+    width: 100%;
+    background: #247BA0;
+}
+
+/* SIDERBAR */
+
+.iconos {
+    font-size: 30px;
+}
+
+.iconos i:hover {
+    color: #CBD4C2;
+}
+
+.iconos .card-body a {
+    text-decoration: none;
+    color: black;
+}
+
+
+/* CARDS */
+
+.log {
+    background: #FFFCFF;
+    color: #50514F;
+}
+
+.login{
+    background: #50514F;
+    color: #FFFCFF;
+}
+
+.card-title:hover {
+    color: rgb(141, 145, 137);
+}
+
+.card-body a {
+    color: #247BA0;
+}
+
+.card-body .card_title_link {
+    text-decoration: none;
+    color: black;
+}
+
+.posts .card-body:hover {
+    border: 2px solid #50514F;
+}
+
+
+@media only screen and (max-width: 600px){
+    .log{
+        width: 100%;
+    }
+}
+
+
+/* ARTICLES */
+
+.newposticon, .newposticon:hover{
+    color: black;
+}
+    /* CODE BLOCKS*/
+    pre code {
+        background-color: #CBD4C2;
+        border: 1px solid #999;
+        display: block;
+        padding: 20px;
+    }
+
+    pre {
+        white-space: pre-line;
+    }
+
+.jumbotron{
+    background: #CBD4C2;
+}
+
+
+/* POST FORM*/
+.posttext{
+    min-height: 300px;
+    border:1px solid rgb(204, 204, 204);
+    background: white;
+    border-radius: 5px;
+}
+
+.btn-save{
+    background: #50514F;
+    width: 300px;
+    color: white;
+}
