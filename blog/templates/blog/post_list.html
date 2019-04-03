@@ -12,35 +12,6 @@
     {% endif %}
     <div class="row">
         <div class="content col-12 col-lg-9 posts">
-            <div class="card my-3">
-                <div class="card-body">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-2">
-                                <img class="img-fluid rounded-circle img-thumbnail" src="{% static 'img/paul.jpg' %}"
-                                    alt="">
-                            </div>
-                            <div class="col-10">
-                                <a href="{% url 'blog:article' %}" class="card_title_link">
-                                    <h1 class="mb-3 card-title">Spring Boot</h1>
-                                </a>
-                                <div class="row">
-                                    <div class="col d-inline-flex">
-                                        <p>Paul Miranda</p>
-                                        <i class="icon-dot"></i>
-                                        <p>28 de Marzo del 2019</p>
-                                    </div>
-                                </div>
-                                <p>
-                                    <a href="#" class="badge badge-light">spring-boot</a>
-                                    <a href="#" class="badge badge-light">java</a>
-                                    <a href="#" class="badge badge-light">jsp</a>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
             {% for post in post_list %}
             <div class="card my-3">
                 <div class="card-body">
@@ -51,7 +22,7 @@
                                     alt="">
                             </div>
                             <div class="col-10">
-                                <a href="{% url 'blog:article' %}" class="card_title_link">
+                                <a href="{% url 'blog:post_detail'  pk=post.pk%}" class="card_title_link">
                                     <h1 class="mb-3 card-title">{{post.title}}</h1>
                                 </a>
                                 <div class="row">
@@ -88,9 +59,9 @@
                     <h4>Popular Tags</h4>
                 </div>
             </div>
-            <div class="card my-3 text-muted">
+            <div class="card my-3 text-center">
                 <div class="card-body">
-                    Paul Miranda Vega
+                    <h4>Advertisement</h4>
                 </div>
             </div>
         </div>
