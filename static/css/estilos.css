@@ -105,7 +105,7 @@ footer {
 }
     /* CODE BLOCKS*/
     pre code {
-        background-color: #CBD4C2;
+        background-color: rgb(236, 241, 231);
         border: 1px solid #999;
         display: block;
         padding: 20px;
@@ -124,7 +124,7 @@ footer {
 .posttext{
     min-height: 300px;
     border:1px solid rgb(204, 204, 204);
-    background: white;
+    background: rgb(219, 218, 218);
     border-radius: 5px;
 }
 
@@ -132,4 +132,20 @@ footer {
     background: #50514F;
     width: 300px;
     color: white;
+}
+
+/* COMMENTS */
+.comment-textarea{
+    width: 500px;
+    height: 100px;
+}
+
+.btn-comments{
+    background: #50514F;
+    color: #ffff;
+    margin-left: 420px;
+}
+
+.media .buttons{
+    margin-bottom: 10px;
 }

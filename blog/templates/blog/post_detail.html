@@ -8,7 +8,8 @@
                 <p>Published on: {{post.created_date}}</p>
                 {% if user.is_authenticated %}
                 <a href="{% url 'blog:post_edit' pk=post.pk %}" class="btn">Edit</a>
-                <button class="btn" data-toggle="modal" data-target="#fm-modal-grid">Delete</button>
+                <button class="btn" data-toggle="modal" data-target="#fm-modal-grid"><i
+                        class="fas fa-trash-alt"></i>Delete</button>
                 <div class="modal fade" id="fm-modal-grid" tabindex="-1" role="dialog" aria-labelledBy="fm-modal-grid"
                     aria-hidden="true">
                     <div class="modal-dialog modal-lg">
@@ -47,6 +48,37 @@
         <div class="col">
             {{post.text|safe|linebreaksbr}}
         </div>
+    </div>
+    <hr>
+    <h1>Comments</h1>
+    <div class="row">
+        <div class="col">
+            <form action="{% url 'blog:new_comment' pk=post.pk %}" method="POST">
+                {% include 'blog/comments_form.html' %}
+            </form>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-4">
+            <ul class="list-unstyled">
+                {% for comment in post.comments.all %}
+                <li class="media">
+                    <div class="media-body">
+                        <h5 class="mt-0 mb-1">{{ comment.created_date }}</h5>
+                        <p>{{ comment.text|safe|linebreaks }}</p>
+                        <div class="text-right buttons">
+                            <a href="{% url 'blog:comment_edit' pk=comment.pk %}">Edit</a>
+                            <form class="d-inline" action="{% url 'blog:comment_remove' pk=comment.pk %}" method="POST">
+                                {% csrf_token %}
+                                <a href="{% url 'blog:post_detail' pk=post.pk %}"><button class="btn">Delete</button></a>
+                            </form>
+                        </div>
+                    </div>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+
     </div>
 </div>
 {% endblock %}
