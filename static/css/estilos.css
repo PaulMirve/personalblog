@@ -189,3 +189,10 @@ footer {
         width: 100%;
     }
 }
+
+.twitter-share-button{
+    text-align: center;
+    background: #1dcaff;
+    color: white;
+    font-size: 10px;
+}
