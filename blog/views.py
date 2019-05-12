@@ -90,6 +90,13 @@ def print_hi(request, pk):
     post.save()
     return redirect('blog:post_detail', pk=post.pk)
 
+def reduce_like(request, pk):
+    post = get_object_or_404(Post, pk=pk)
+    post.reduce_likes()
+    post.save()
+    return redirect('blog:post_detail', pk=post.pk)
+
+
 def highlight_post(request, pk):
     post = get_object_or_404(Post, pk=pk)
     post.highlight_post()

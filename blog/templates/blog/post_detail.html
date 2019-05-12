@@ -3,7 +3,7 @@
 <div class="jumbotron postdetail-jumbo">
     <div class="container">
         <h3 class="display-4">{{post.title}}
-            <a href="{% url 'blog:print_hi' pk=post.pk %}">
+            <a class="icon-link" href="{% url 'blog:print_hi' pk=post.pk %}">
                 <i data-post-id="{{post.id}}" class="heart-icon icono icon-heart-empty"></i>
             </a>
 
@@ -46,6 +46,9 @@
         {% endif %}
     </div>
     <div class="d-flex justify-content-end">
+        <a class="twitter-share-button btn btn-primary btn-sm mr-3"
+            href="https://twitter.com/intent/tweet?text=www.paulmiranda.com{% url 'blog:post_detail' pk=post.pk %}">
+            Tweet</a>
         <div class="fb-share-button" data-href="www.paulmiranda.com{% url 'blog:post_detail' pk=post.pk%}"
             data-layout="button_count">
         </div>
@@ -90,15 +93,8 @@
             </ul>
         </div>
     </div>
+    <button class="boton">boton</button>
 </div>
-<script>
-    let heart = document.querySelector('.icon-heart-empty');
-    heart.addEventListener('click', () => {
-        console.log('soy clickeado');
-        heart.classList.toggle('icon-heart');
-    });
-</script>
-<div id="fb-root"></div>
 <script>
     (function (d, s, id) {
         var js, fjs = d.getElementsByTagName(s)[0];
@@ -110,17 +106,55 @@
     }(document, 'script', 'facebook-jssdk'));
 </script>
 <script>
-    var route = window.location.pathname;
-    var icono = document.querySelector('.icono');
-    var likeado = JSON.parse(window.localStorage.getItem('liked'));
-    icono.addEventListener('click', () => {
-        window.localStorage.setItem('liked', JSON.stringify({
-            path: route,
-            value: true
+    var icon = document.querySelector('.icono');
+    var keys = Object.keys(window.localStorage);
+    var postsLiked = [];
+    keys.forEach(key => {
+        postsLiked.push(JSON.parse(window.localStorage.getItem(key)));
+    });
+
+    icon.addEventListener('click', () => {
+        window.localStorage.setItem("{{post.title}}", JSON.stringify({
+            post: "{{post.id}}",
+            liked: true
         }));
     });
-    if(likeado.path === route){
-        icono.classList.toggle('icon-heart');
-    }
+
+    postsLiked.forEach(post => {
+        if (post.post === "{{post.id}}") {
+            if (post.liked) {
+                icon.addEventListener('click', () => {
+                    console.log('soy verdadero y tengo like');
+                    document.querySelector('.icon-link').href =
+                        "{% url 'blog:reduce_like' pk=post.pk %}";
+                    window.localStorage.setItem("{{post.title}}", JSON.stringify({
+                        post: "{{post.id}}",
+                        liked: false
+                    }));
+                });
+            } else {
+                icon.addEventListener('click', () => {
+                    console.log('soy falso y no estoy likeado');
+                    icon.className = "heart-icon icono icon-heart-empty";
+                    window.localStorage.setItem("{{post.title}}", JSON.stringify({
+                        post: "{{post.id}}",
+                        liked: true
+                    }));
+                });
+            }
+        }
+
+    });
+
+    postsLiked.forEach(post => {
+        if (post.post === "{{post.id}}") {
+            if (post.liked === true) {
+                icon.className = "heart-icon icono icon-heart";
+            } else {
+
+                icon.className = "heart-icon icono icon-heart-empty";
+            }
+        }
+    });
 </script>
 {% endblock %}

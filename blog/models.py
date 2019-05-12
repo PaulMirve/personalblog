@@ -24,6 +24,9 @@ class Post(models.Model):
         print(self.likes)
         self.likes += 1
 
+    def reduce_likes(self):
+        self.likes -= 1
+
     def split_tags(self):
         return self.tags.split()
 

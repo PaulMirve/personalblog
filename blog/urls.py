@@ -14,6 +14,7 @@ urlpatterns = [
     path('comment/<int:pk>/remove', views.CommentsDeleteView.as_view(), name='comment_remove'),
     path('comment/<int:pk>/edit/', views.CommentsUpdateView.as_view(), name="comment_edit"),
     path('process_like/', views.process_like, name="process_like"),
+    path('<int:pk>/reduce_like/', views.reduce_like, name="reduce_like"),
     path('print/<int:pk>', views.print_hi, name='print_hi'),
     path('<int:pk>/highlight_post/',views.highlight_post, name='highlight_post'),
     path('<int:pk>/remove_highlight', views.remove_highlight, name="remove_highlight"),
