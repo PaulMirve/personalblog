@@ -1,52 +1,61 @@
 {% extends 'base.html' %}
 {% block body_block %}
-<div class="container">
-    <div class="row">
-        <div class="col">
-            <div class="jumbotron text-center">
-                <h3 class="display-4">{{post.title}}</h3>
-                <p>Published on: {{post.created_date}}</p>
-                {% if user.is_authenticated %}
-                <a href="{% url 'blog:post_edit' pk=post.pk %}" class="btn">Edit</a>
-                <button class="btn" data-toggle="modal" data-target="#fm-modal-grid"><i
-                        class="fas fa-trash-alt"></i>Delete</button>
-                <div class="modal fade" id="fm-modal-grid" tabindex="-1" role="dialog" aria-labelledBy="fm-modal-grid"
-                    aria-hidden="true">
-                    <div class="modal-dialog modal-lg">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <button class="close" data-dismiss="modal" aria-label="Cerrar">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div class="modal-body">
-                                <div class="container-fluid">
-                                    <div class="row">
-                                        <div class="col-12 col-sm-6">
-                                            <p>Are you sure you want to delte {{post.title}}</p>
-                                        </div>
-                                    </div>
+<div class="jumbotron postdetail-jumbo">
+    <div class="container">
+        <h3 class="display-4">{{post.title}}
+            <a href="{% url 'blog:print_hi' pk=post.pk %}">
+                <i data-post-id="{{post.id}}" class="heart-icon icono icon-heart-empty"></i>
+            </a>
+
+        </h3>
+        <p><i class="icon-calendar"></i>{{post.created_date}} <i class="icon-user"></i>{{post.author}}</p>
+        {% if user.is_authenticated %}
+        <a href="{% url 'blog:post_edit' pk=post.pk %}" class="btn"><i class="icon-pencil"></i> Edit</a>
+        <button class="btn" data-toggle="modal" data-target="#fm-modal-grid"><i
+                class="icon-trash-empty"></i>Delete</button>
+        <div class="modal fade" id="fm-modal-grid" tabindex="-1" role="dialog" aria-labelledBy="fm-modal-grid"
+            aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button class="close" data-dismiss="modal" aria-label="Cerrar">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-12 col-sm-6">
+                                    <p>Are you sure you want to delte {{post.title}}</p>
                                 </div>
-                            </div>
-
-                            <div class="modal-footer">
-                                <form action="{% url 'blog:post_remove' pk=post.pk %}" method="POST">
-                                    {% csrf_token %}
-                                    <button class="btn">Delete</button>
-                                </form>
-                                <button class="btn btn-primary" data-dismiss="modal">Cancelar</button>
-
                             </div>
                         </div>
                     </div>
+
+                    <div class="modal-footer">
+                        <form action="{% url 'blog:post_remove' pk=post.pk %}" method="POST">
+                            {% csrf_token %}
+                            <button class="btn">Delete</button>
+                        </form>
+                        <button class="btn btn-primary" data-dismiss="modal">Cancelar</button>
+
+                    </div>
                 </div>
-                {% endif %}
             </div>
         </div>
+        {% endif %}
     </div>
+    <div class="d-flex justify-content-end">
+        <div class="fb-share-button" data-href="www.paulmiranda.com{% url 'blog:post_detail' pk=post.pk%}"
+            data-layout="button_count">
+        </div>
+    </div>
+
+</div>
+<div class="container">
     <div class="row">
         <div class="col">
-            {{post.text|safe|linebreaksbr}}
+            {{post.text|safe}}
         </div>
     </div>
     <hr>
@@ -58,8 +67,8 @@
             </form>
         </div>
     </div>
-    <div class="row">
-        <div class="col-4">
+    <div class="row mt-3">
+        <div class="col-12 col-lg-5">
             <ul class="list-unstyled">
                 {% for comment in post.comments.all %}
                 <li class="media">
@@ -70,15 +79,48 @@
                             <a href="{% url 'blog:comment_edit' pk=comment.pk %}">Edit</a>
                             <form class="d-inline" action="{% url 'blog:comment_remove' pk=comment.pk %}" method="POST">
                                 {% csrf_token %}
-                                <a href="{% url 'blog:post_detail' pk=post.pk %}"><button class="btn">Delete</button></a>
+                                <a href="{% url 'blog:post_detail' pk=post.pk %}"><button
+                                        class="btn">Delete</button></a>
                             </form>
                         </div>
                     </div>
                 </li>
+                <hr>
                 {% endfor %}
             </ul>
         </div>
-
     </div>
 </div>
+<script>
+    let heart = document.querySelector('.icon-heart-empty');
+    heart.addEventListener('click', () => {
+        console.log('soy clickeado');
+        heart.classList.toggle('icon-heart');
+    });
+</script>
+<div id="fb-root"></div>
+<script>
+    (function (d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s);
+        js.id = id;
+        js.src = "https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.0";
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+</script>
+<script>
+    var route = window.location.pathname;
+    var icono = document.querySelector('.icono');
+    var likeado = JSON.parse(window.localStorage.getItem('liked'));
+    icono.addEventListener('click', () => {
+        window.localStorage.setItem('liked', JSON.stringify({
+            path: route,
+            value: true
+        }));
+    });
+    if(likeado.path === route){
+        icono.classList.toggle('icon-heart');
+    }
+</script>
 {% endblock %}

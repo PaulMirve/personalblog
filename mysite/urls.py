@@ -23,4 +23,5 @@ urlpatterns = [
     path('', include('blog.urls'), name="blog"),
     path('accounts/login/', vistas.LoginView.as_view(template_name='registration/login.html'), name='login'),
     path('accounts/logout/', vistas.LogoutView.as_view(template_name='blog/post_list.html'), name='logout'),
+    path('', include('aboutme.urls'), name="aboutme"),
 ]

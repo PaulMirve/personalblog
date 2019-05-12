@@ -1,12 +1,13 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.views.generic import (TemplateView, CreateView, ListView, DetailView, UpdateView, DeleteView,)
-from django.views.generic.edit import FormMixin
+from django.views.generic.edit import FormMixin, FormView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.decorators import login_required
 from blog.models import Post, Comments
 from blog.forms import PostForm, CommentsForm
 from django.utils import timezone
 from django.urls import reverse_lazy
+from django.http import JsonResponse
 
 # Create your views here.
 class ArticleView(TemplateView):
@@ -75,5 +76,28 @@ class CommentsUpdateView(UpdateView):
     form_class = CommentsForm
     model = Comments
 
+def process_like(request):
+    post_id = request.POST['post_id']
+    post = Post.objects.get(id=post_id)
+    post.process_likes()
+    return render(request, 'blog/post_list.html')
 
 
+def print_hi(request, pk):
+    print('Hi there!')
+    post = get_object_or_404(Post, pk=pk)
+    post.process_likes()
+    post.save()
+    return redirect('blog:post_detail', pk=post.pk)
+
+def highlight_post(request, pk):
+    post = get_object_or_404(Post, pk=pk)
+    post.highlight_post()
+    post.save()
+    return  redirect('blog:post_list')
+
+def remove_highlight(request, pk):
+    post = get_object_or_404(Post, pk=pk)
+    post.remove_highlight()
+    post.save()
+    return  redirect('blog:post_list')

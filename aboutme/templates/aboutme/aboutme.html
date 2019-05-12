@@ -1,0 +1,136 @@
+{% extends 'base.html'%}
+{% load static %}
+{% block body_block %}
+<link rel="stylesheet" href="{% static 'css/aboutme.css' %}">
+<div class="jumbotron">
+    <div class="row">
+        <div class="col-12 col-lg-3 text-center">
+            <img src="{% static 'img/paul.jpg' %}" style="width:292px;" alt="My photo"
+                class="rounded-circle img-fluid my-photo">
+        </div>
+        <div class="col-12 col-lg-8 justify-content-center">
+            <h3 class="display-4 text-center text-lg-left">Paul Miranda Vega</h3>
+            <p class="text-justify">Hi! I'm Paul Miranda Vega, a graduated from the Universidad Autónoma de Baja
+                California in
+                Mexicali, Baja California from the Degree in Computational Systems. I have experience
+                working with Java and have knowledges of Python and JavaScript.
+            </p>
+            <div class="row social-networks justify-content-center justify-content-lg-start">
+                <div class="aboutme-icons">
+                    <a href="https://github.com/PaulMirve"><i class="icon-github-circled"></i></a>
+                    <a href="https://www.linkedin.com/in/paul-miranda-vega-28ba5b179/"><i class="icon-linkedin"></i></a>
+                    <a href=""><i class="icon-twitter"></i></a>
+                    <a href="https://www.facebook.com/paul.miranda.90"><i class="icon-facebook-official"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<div class="container">
+    <h5 class="display-4">Experience</h5>
+    <hr>
+    <div class="row mt-5">
+        <div class="col-12 col-lg-4">
+            <div class="list-group" id="lista" role="tablist">
+                <a href="#elemento1" class="list-group-item list-group-item-action active" data-toggle="list" role="tab"
+                    aria-controls="elemento1">SaitBC</a>
+                <a href="#elemento2" class="list-group-item list-group-item-action" data-toggle="list" role="tab"
+                    aria-controls="elemento2">AvanTI</a>
+            </div>
+        </div>
+        <div class="col-12 col-lg-8 mt-lg-0 mt-3">
+            <div class="tab-content" id="nav-tabContent">
+                <div class="tab-pane fade show active" id="elemento1" role="tabpanel" aria-labelledBy="elemento1">
+                    <p>Company in charge of the development of administrative software and ERP
+                        with the objective of reduce cost, automatice practices, and provide KPI
+                        for the entrerprises.
+                    </p>
+                    <div class="row">
+                        <div class="col-6">
+                            <h3>Time working</h3>
+                            <p>February 2019 - Actuality</p>
+                        </div>
+                        <div class="col-6">
+                            <h3>Job</h3>
+                            <ul>
+                                <li>Java Programmer</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tab-pane fade show" id="elemento2" role="tabpanel" aria-labelledBy="elemento2">
+                    <p>A escolar bussines wich objective is to develop quality software with a excelent
+                        teamwork. Developers of a escolar software wich allows the profesors to update
+                        the advance of temmatic content in their subjects.
+                    </p>
+                    <div class="row">
+                        <div class="col-6">
+                            <h3>Time working</h3>
+                            <p>August 2018 - January 2019</p>
+                        </div>
+                        <div class="col-6">
+                            <h3>Job</h3>
+                            <ul>
+                                <li>Java Programmer</li>
+                                <li>Data Base Administrator</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <h5 class="display-4">Technologies</h5>
+    <hr>
+    <div class="row mt-5">
+        <div class="col-12 technologies d-flex justify-content-between">
+            <img src="{% static 'img/technologies/html.png' %}" alt="HTML">
+            <img src="{% static 'img/technologies/css.png' %}" alt="CSS">
+            <img src="{% static 'img/technologies/bootstrap.png' %}" alt="Bootstrap">
+            <img src="{% static 'img/technologies/javascript.png' %}" alt="JavaScript">
+            <img src="{% static 'img/technologies/python.png' %}" alt="Python">
+            <img src="{% static 'img/technologies/django.png' %}" alt="Django">
+            <img src="{% static 'img/technologies/java.png' %}" alt="Java">
+            <img src="{% static 'img/technologies/springboot.png' %}" alt="Spring Boot">
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12 col-lg-6">
+            <h5 class="display-4 mt-5">Lenguages</h5>
+            <hr>
+        </div>
+        <div class="col-12 col-lg-6">
+            <h5 class="display-4 mt-5">Skills</h5>
+            <hr>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12 col-lg-6">
+            <h5>English</h5>
+            <div class="progress mb-3" style="height:30px">
+                <div class="progress-bar" role="progressbar" style="width:80%">80%</div>
+            </div>
+            <h5>Japanese</h5>
+            <div class="progress mb-3" style="height:30px">
+                <div class="progress-bar" role="progressbar" style="width:20%">20%</div>
+            </div>
+            <h3>Spanish</h3>
+            <div class="progress mb-3" style="height:30px">
+                <div class="progress-bar" role="progressbar" style="width:100%">Native</div>
+            </div>
+        </div>
+        <div class="col-12 col-lg-6 ">
+            <ul>
+                <li>Puntuality</li>
+                <li>Responsability</li>
+                <li>Teamwork</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

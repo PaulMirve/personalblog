@@ -3,6 +3,14 @@
     padding: 0;
 }
 
+html{
+    box-sizing: border-box;
+}
+
+*, *:before, *:after {
+    box-sizing: inherit;
+  }
+
 html,
 body {
     height: 100pv;
@@ -63,6 +71,14 @@ footer {
 
 /* CARDS */
 
+.likes_and_comments{
+    font-size: 20px;
+}
+
+.profile_picture{
+    border-radius: 50%;
+}
+
 .log {
     background: #FFFCFF;
     color: #50514F;
@@ -99,6 +115,13 @@ footer {
 
 
 /* ARTICLES */
+.postdetail-jumbo{
+    margin-top: -50px;
+}
+
+.heart-icon{
+    color: black;
+}
 
 .newposticon, .newposticon:hover{
     color: black;
@@ -124,28 +147,45 @@ footer {
 .posttext{
     min-height: 300px;
     border:1px solid rgb(204, 204, 204);
-    background: rgb(219, 218, 218);
     border-radius: 5px;
+    width: 100%;
 }
+
 
 .btn-save{
     background: #50514F;
     width: 300px;
     color: white;
 }
+@media (max-width:500px){
+    .btn-save{
+        width: 100%;
+    }
+}
 
 /* COMMENTS */
 .comment-textarea{
-    width: 500px;
+    width: 50%;
     height: 100px;
 }
 
 .btn-comments{
     background: #50514F;
-    color: #ffff;
-    margin-left: 420px;
+    color: #ffffff;
+    margin-left: 42%;
 }
 
 .media .buttons{
     margin-bottom: 10px;
+}
+
+@media (max-width: 600px){
+    .comment-textarea{
+        width: 100%;
+    }
+
+    .btn-comments{
+        margin-left: 0;
+        width: 100%;
+    }
 }

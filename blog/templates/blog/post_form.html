@@ -9,16 +9,17 @@
                 {{ form.as_p }}
                 <input type="submit" class="btn btn-save" value="Save">
             </form>
+            <a href="{% url 'blog:post_list' %}" class="btn btn-save mt-3 ">Cancel</a>
         </div>
     </div>
 </div>
 {% load static %}
 <script src="{% static 'js/medium-editor.js' %}"></script>
 <script src="{% static 'js/medium-button.min.js' %}"></script>
-<script>
+<!-- <script>
     var editor = new MediumEditor('.editable', {
         toolbar: {
-            buttons: ['bold', 'italic', 'underline', 'anchor', 'h2', 'h3', 'quote', 'code']
+            buttons: ['bold', 'italic', 'underline', 'anchor', 'h4', 'h3', 'quote', 'code', 'gist']
         },
         extensions: {
             // compact
@@ -26,8 +27,8 @@
                 label: 'code',
                 start: '<pre><code>',
                 end: '</code></pre>'
-            }),
+            })
         }
-    })
-</script>
+    });
+</script> -->
 {% endblock %}

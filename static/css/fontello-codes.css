@@ -5,9 +5,16 @@
 .icon-heart-empty:before { content: '\e803'; } /* '' */
 .icon-dot:before { content: '\e804'; } /* '' */
 .icon-heart:before { content: '\e805'; } /* '' */
+.icon-trash-empty:before { content: '\e806'; } /* '' */
+.icon-pencil:before { content: '\e807'; } /* '' */
+.icon-calendar:before { content: '\e808'; } /* '' */
+.icon-user:before { content: '\e809'; } /* '' */
 .icon-home:before { content: '\e80a'; } /* '' */
+.icon-star-empty:before { content: '\e80b'; } /* '' */
+.icon-star:before { content: '\e80c'; } /* '' */
 .icon-twitter:before { content: '\f099'; } /* '' */
 .icon-male:before { content: '\f183'; } /* '' */
 .icon-file-code:before { content: '\f1c9'; } /* '' */
 .icon-facebook-official:before { content: '\f230'; } /* '' */
+.icon-commenting-o:before { content: '\f27b'; } /* '' */
 .icon-instagram:before { content: '\f32d'; } /* '' */

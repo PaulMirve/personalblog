@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Paul Miranda Vega</title>
+    <link rel="icon" href="http://example.com/favicon.png">
     <link rel="stylesheet" href="{% static 'dist/css/medium-editor.css' %}">
     <link rel="stylesheet" href="{% static 'dist/css/themes/beagle.css' %}">
     <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
@@ -27,15 +28,12 @@
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active d-inline-flex align-items-center">
                         <i class="icon-home"></i>
-                        <a class="nav-link" href="{% url 'blog:post_list' %}">Home <span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="{% url 'blog:post_list' %}">Home <span
+                                class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item d-inline-flex align-items-center">
                         <i class="icon-male"></i>
-                        <a class="nav-link" href="#">About Me</a>
-                    </li>
-                    <li class="nav-item d-inline-flex align-items-center">
-                        <i class="icon-file-code"></i>
-                        <a class="nav-link" href="#">Projects</a>
+                        <a class="nav-link" href="{% url 'aboutme:aboutme' %}">About Me</a>
                     </li>
                 </ul>
                 {% if user.is_authenticated %}
@@ -67,5 +65,15 @@
 <script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
 <script src="{% static 'js/popper.min.js' %}"></script>
 <script src="{% static 'js/bootstrap.min.js' %}"></script>
+<script>
+    var navitems = document.getElementsByClassName("nav-item");
+    for (var i = 0; i < navitems.length; i++) {
+        navitems[i].addEventListener("click", function () {
+            var current = document.getElementsByClassName("active");
+            current[0].className = current[0].className.replace(" active", "");
+            this.className += " active";
+        });
+    }
+</script>
 
 </html>
