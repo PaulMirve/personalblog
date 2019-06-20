@@ -12,6 +12,7 @@
 .icon-home:before { content: '\e80a'; } /* '' */
 .icon-star-empty:before { content: '\e80b'; } /* '' */
 .icon-star:before { content: '\e80c'; } /* '' */
+.icon-doc:before { content: '\e80d'; } /* '' */
 .icon-twitter:before { content: '\f099'; } /* '' */
 .icon-male:before { content: '\f183'; } /* '' */
 .icon-file-code:before { content: '\f1c9'; } /* '' */
