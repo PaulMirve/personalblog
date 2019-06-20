@@ -114,13 +114,19 @@ footer {
 }
 
 
-/* ARTICLES */
+/* POSTS */
 .postdetail-jumbo{
     margin-top: -50px;
 }
 
 .heart-icon{
     color: black;
+}
+
+@media (max-width:370px){
+    .icono{
+        font-size: 40px;
+    }
 }
 
 .newposticon, .newposticon:hover{
